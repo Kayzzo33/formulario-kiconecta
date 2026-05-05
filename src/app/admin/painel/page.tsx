@@ -282,5 +282,3 @@ function MetricCard({ title, value, icon, color }: any) {
     </div>
   );
 }
-/ /   t r i g g e r   b u i l d  
- 
