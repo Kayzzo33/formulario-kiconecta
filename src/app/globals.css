@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #080808;
+  --surface: #111111;
+  --purple: #7B2FBE;
+  --purple-dim: #4A1A75;
+  --white: #F5F5F5;
+  --muted: #6B6B6B;
+  --border: #222222;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--white);
+  --color-purple: var(--purple);
+  --color-purple-dim: var(--purple-dim);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--white);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: var(--font-geist-sans), sans-serif;
+  min-height: 100dvh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animations */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.2; }
+  40%           { opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes line-in {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+.fade-up {
+  animation: fade-up 0.5s ease both;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+
+/* Custom Components */
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--purple);
+  animation: pulse-dot 2s ease-in-out infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.dot-loading {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  margin: 0 2px;
+}
+
+.dot-1 { animation: blink 1.2s infinite 0.0s; }
+.dot-2 { animation: blink 1.2s infinite 0.2s; }
+.dot-3 { animation: blink 1.2s infinite 0.4s; }
+
+/* Form Elements */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #1A1A1A;
+  transition: border-color 0.2s ease;
+}
+
+.field:focus-within {
+  border-bottom-color: var(--purple);
+}
+
+.field label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.field:focus-within label {
+  color: #9B4FDE;
+}
+
+.field input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--white);
+  padding: 4px 0;
+  width: 100%;
+  caret-color: var(--purple);
+}
+
+.field input::placeholder {
+  color: #2A2A2A;
+}
+
+.error-msg {
+  font-size: 11px;
+  color: #E05555;
+  margin-top: 4px;
+  letter-spacing: 0.05em;
+}
+
+.btn-cta {
+  width: 100%;
+  padding: 18px 0;
+  background: var(--purple);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  touch-action: manipulation;
+}
+
+.btn-cta:active {
+  transform: scale(0.97);
+  opacity: 0.85;
+}
+
+@media (hover: hover) {
+  .btn-cta:hover {
+    opacity: 0.9;
+  }
+}
+
+.btn-cta[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
