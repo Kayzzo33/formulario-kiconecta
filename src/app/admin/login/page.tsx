@@ -25,63 +25,63 @@ export default function AdminLogin() {
 
       if (error) {
         setError('Credenciais inválidas');
+        setLoading(false);
         return;
       }
 
       router.push('/admin/painel');
     } catch (err) {
       setError('Ocorreu um erro no login.');
-    } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-card border border-border p-8 rounded-2xl shadow-2xl fade-in">
-        <div className="flex flex-col items-center mb-8">
-          <div className="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mb-4">
-            <Lock className="w-6 h-6 text-amber-500" />
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[#080808]">
+      <div className="w-full max-w-md bg-[#111111] border border-[#222222] p-10 rounded-lg shadow-2xl fade-up">
+        <div className="flex flex-col items-center mb-10">
+          <div className="w-14 h-14 bg-[#7B2FBE]/10 rounded-full flex items-center justify-center mb-4">
+            <Lock className="w-6 h-6 text-[#7B2FBE]" />
           </div>
-          <h1 className="text-2xl font-bold text-white">Área Administrativa</h1>
+          <h1 className="text-xl font-bold text-white uppercase tracking-widest">Área Administrativa</h1>
         </div>
 
-        <form onSubmit={handleLogin} className="space-y-6">
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2">E-mail</label>
+        <form onSubmit={handleLogin} className="space-y-8">
+          <div className="space-y-6">
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-bold text-[#6B6B6B] uppercase tracking-widest">E-mail</label>
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#1a1a1a] border border-border rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+                className="bg-transparent border-b border-[#222222] focus:border-[#7B2FBE] py-2 text-white outline-none transition-colors"
                 placeholder="admin@exemplo.com"
               />
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2">Senha</label>
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-bold text-[#6B6B6B] uppercase tracking-widest">Senha</label>
               <input
                 type="password"
                 required
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
-                className="w-full bg-[#1a1a1a] border border-border rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+                className="bg-transparent border-b border-[#222222] focus:border-[#7B2FBE] py-2 text-white outline-none transition-colors"
                 placeholder="••••••••"
               />
             </div>
           </div>
 
           {error && (
-            <p className="text-rose-500 text-sm font-medium text-center">{error}</p>
+            <p className="text-[#E05555] text-xs font-medium text-center tracking-wide">{error}</p>
           )}
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-amber-800 text-black font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2"
+            className="w-full bg-[#7B2FBE] hover:bg-[#9B4FDE] disabled:opacity-50 text-white font-bold py-4 rounded text-xs uppercase tracking-widest transition-all active:scale-[0.98] flex items-center justify-center gap-2"
           >
-            {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Entrar'}
+            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Entrar'}
           </button>
         </form>
       </div>
