@@ -80,7 +80,7 @@ export default function AdminPainel() {
   }, [router, fetchInscricoes, fetchSettings]);
 
   const handleSignOut = async () => {
-    await supabase.signOut();
+    await supabase.auth.signOut();
     router.push('/admin/login');
   };
 
