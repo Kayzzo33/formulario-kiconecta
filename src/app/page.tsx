@@ -152,9 +152,20 @@ export default function Home() {
           )}
         </button>
         
-        <div className="mt-8 text-center">
+        <div className="mt-12 text-center space-y-2">
           <p className="text-[10px] text-[#2E2E2E] tracking-wider uppercase">
-            &copy; 2025 · Todos os direitos reservados
+            &copy; {new Date().getFullYear()} Kiconecta · Todos os direitos reservados
+          </p>
+          <p className="text-[9px] text-[#2E2E2E] tracking-widest uppercase">
+            Desenvolvido por{' '}
+            <a 
+              href="https://www.instagram.com/onzy.company/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors underline underline-offset-2"
+            >
+              Onzy Company
+            </a>
           </p>
         </div>
       </footer>

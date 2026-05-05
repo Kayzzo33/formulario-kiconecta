@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Masterclass - Inscrições Abertas",
+  title: "Kiconecta - Masterclass",
   description: "Solicite sua vaga para o Masterclass exclusivo. Vagas limitadas e aprovação manual.",
 };
 

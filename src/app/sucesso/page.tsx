@@ -25,6 +25,15 @@ export default function Sucesso() {
           &larr; voltar
         </Link>
       </div>
+
+      <footer className="absolute bottom-8 left-0 right-0 text-center space-y-1 fade-up" style={{ animationDelay: '0.5s' }}>
+        <p className="text-[9px] text-[#2E2E2E] tracking-wider uppercase">
+          &copy; {new Date().getFullYear()} Kiconecta
+        </p>
+        <p className="text-[8px] text-[#2E2E2E] tracking-widest uppercase">
+          Desenvolvido por <a href="https://www.instagram.com/onzy.company/" className="hover:text-white transition-colors">Onzy Company</a>
+        </p>
+      </footer>
     </div>
   );
 }
